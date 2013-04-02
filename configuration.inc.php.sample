@@ -1,0 +1,33 @@
+<?php
+/**
+ * Sample configuration file. Adjust variables to match your Codebase & Deploy Project.
+ *
+ * For information about this script, @see https://github.com/vmattila/codebase-deploy-ticket-notification
+ */
+
+// The URL Base for deployment details
+$deployhq_url_base = "https://<deploy-account-name>.deployhq.com/projects/<deploy-project-name>/deployments/";
+
+// Skip if one of these server is the deployment target
+$skip_servers = array();
+
+// Path to a copy of the repository is kept on this server
+$local_repository_path = '/home/deploy/repository.git';
+
+// How Codebase repository remote is called in your local git repo
+$codebase_remote_name = 'origin';
+
+// Should we run the repository commands as a some other user? This requires that web server user is allowed in sudoers file
+// If you can run the repository commands as the web server user, set this to FALSE
+$sudo_to_user = 'deploy';
+
+// Codebase User Authentication string. Replace your Codebase account name (from the url XXXXX.codebasehq.com), API user email and API user password to the string.
+$codebase_user_auth = '<codebase-account>/<user-email>:<user-password>';
+
+// Ticket comment template. Placeholders available:
+//  {server}
+//  {deployment_url}
+$ticket_comment_template = 'This ticket is deployed to {server}. Deployment details: {deployment_url}';
+
+// Enter the ID of your status here, if you want that tickets are updated with a new status too
+$update_status = false;
